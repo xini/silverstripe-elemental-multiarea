@@ -293,9 +293,9 @@ class MultiElementalAreasExtension extends ElementalAreasExtension
                     $disallowedClasses = $relationConfig['disallowed_elements'];
                 }
                 if (is_array($disallowedClasses)) {
-                    foreach ($availableClasses as $availableClass) {
+                    foreach ($availableClasses as $key => $availableClass) {
                         if (in_array($availableClass, $disallowedClasses)) {
-                            unset($availableClasses[$availableClass]);
+                            unset($availableClasses[$key]);
                         }
                     }
                 }
