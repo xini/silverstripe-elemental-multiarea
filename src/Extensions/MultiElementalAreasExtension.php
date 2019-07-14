@@ -250,12 +250,12 @@ class MultiElementalAreasExtension extends ElementalAreasExtension
             $disallowedElements = $config->get('disallowed_elements');
         }
 
-        foreach ($availableClasses as $availableClass) {
+        foreach ($availableClasses as $key => $availableClass) {
             $inst = singleton($availableClass);
 
             if (is_array($disallowedElements)) {
                 if (in_array($availableClass, $disallowedElements)) {
-                    unset($availableClasses[$availableClass]);
+                    unset($availableClasses[$key]);
                     continue;
                 }
             }
