@@ -251,7 +251,7 @@ class MultiElementalAreasExtension extends ElementalAreasExtension
         }
 
         foreach ($availableClasses as $key => $availableClass) {
-            $inst = singleton($availableClass);
+            $inst = $availableClass::singleton();
 
             if (is_array($disallowedElements)) {
                 if (in_array($availableClass, $disallowedElements)) {
@@ -303,6 +303,7 @@ class MultiElementalAreasExtension extends ElementalAreasExtension
         }
 
         foreach ($availableClasses as $availableClass) {
+            $inst = $availableClass::singleton();
             $types[$availableClass] = $inst->getType();
         }
 
