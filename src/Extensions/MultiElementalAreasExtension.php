@@ -200,18 +200,21 @@ class MultiElementalAreasExtension extends ElementalAreasExtension
                             $uninheritedConfig = $this->getOwner()->config()
                                 ->get('elemental_relations', Config::UNINHERITED);
 
-                            if (isset($config['allowed_elements'])) {
-                                unset($config['allowed_elements']);
-                            }
-                            if (isset($uninheritedConfig['allowed_elements'])) {
-                                $config['allowed_elements'] = $uninheritedConfig['allowed_elements'];
-                            }
+                            if (isset($uninheritedConfig[$relationName])) {
 
-                            if (isset($config['disallowed_elements'])) {
-                                unset($config['disallowed_elements']);
-                            }
-                            if (isset($uninheritedConfig['disallowed_elements'])) {
-                                $config['disallowed_elements'] = $uninheritedConfig['disallowed_elements'];
+                                if (isset($config['allowed_elements'])) {
+                                    unset($config['allowed_elements']);
+                                }
+                                if (isset($uninheritedConfig[$relationName]['allowed_elements'])) {
+                                    $config['allowed_elements'] = $uninheritedConfig[$relationName]['allowed_elements'];
+                                }
+
+                                if (isset($config['disallowed_elements'])) {
+                                    unset($config['disallowed_elements']);
+                                }
+                                if (isset($uninheritedConfig[$relationName]['disallowed_elements'])) {
+                                    $config['disallowed_elements'] = $uninheritedConfig[$relationName]['disallowed_elements'];
+                                }
                             }
                         }
                     }
