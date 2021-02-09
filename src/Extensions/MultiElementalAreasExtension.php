@@ -114,7 +114,7 @@ class MultiElementalAreasExtension extends ElementalAreasExtension
             $areaID = $eaRelationship . 'ID';
             $eaClassName = $hasOnes[$eaRelationship];
 
-            if (!$this->owner->$areaID) {
+            if (!$this->owner->$areaID || !($existing = $eaClassName::get()->byID($this->owner->$areaID)) || !$existing->exists()) {
                 $area = $eaClassName::create();
                 $area->OwnerClassName = get_class($this->owner);
                 $area->write();
